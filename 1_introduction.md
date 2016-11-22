@@ -218,7 +218,7 @@ For adding a new item to our todo list, we need to do the following things:
 
 1. Get the input from the <input /> tag
 1. Add the input to our `todos`
-1. Render them in our <ol>
+1. Render them in our ol tag
 
 ## v-on
 This directive handles events. When we do a v-on:click="AddMethod", it'll run AddMethod when the element is clicked, which is exactly what is happening in our case.
