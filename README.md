@@ -9,11 +9,7 @@ Vue is simple to use and supports Web Components.
 
 ## Why this book?
 
-While learning Vue, I was a total newbie to front end development. The official guide at http://vuejs.org/v2/guide/ assumes. I tried submitting a [https://github.com/vuejs/vuejs.org/pull/591](PR) to add a verbose getting started example, but it got rejected because. 
-
-> you don't really need <html>, <head> or <body> if you are running the example code in a decently up-to-date browser
-
-This aims to be a book which teaches by example.
+While learning Vue, I was a total newbie to front end development. This is the book I wish existed when I was learning front end dev with Vue. A book which teaches _how to apply_ the knowledge.
 
 ## Contributing
 
