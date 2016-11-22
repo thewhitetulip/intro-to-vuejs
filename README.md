@@ -20,3 +20,11 @@ This aims to be a book which teaches by example.
 Please raise an issue regarding the contribution you wish to make. Once that is decided you can start working on the change if it is a big one, otherwise just send a PR.
 
 This is a contributor friendly project and won't reject a PR unless there is really a valid reason.
+
+## Inspiration and Acknowledgements
+
+This book is inspired from the [official guide](http://vuejs.org), it can be thought of as a different rendering of the same content. Some content has been adapted from the [project](http://github.com/vuejs/vuejs.org/)
+
+## Availability
+
+This book is FOSS at [Github](https://github.com/thewhitetulip/intro-to-vuejs)
