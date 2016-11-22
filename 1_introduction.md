@@ -1,10 +1,13 @@
 # What is Vue?
 
-Vue is a library, the core library is focused on the View layer of the classic MVC model, but along with (supporting libraries)[https://github.com/vuejs/awesome-vue#libraries--plugins], one can easily build a single page app in Vue. Vue provides tools for simplifying the development. We will use some of them as we go ahead in this book.
+Vue is a library, the core library is focused on the View layer of the classic MVC model, but along with [supporting libraries](https://github.com/vuejs/awesome-vue#libraries--plugins), one can easily build a single page app in Vue. Vue provides tools for simplifying the development. We will use some of them as we go ahead in this book.
 
-Coming back to the example we used in the earlier chapter.
+Coming back to the example we used in the installation chapter.
 
-`<script src="vue.js"> </script>` This will load Vue in the browser.  It creates the global variable `Vue` which we will be using in the `<script>` tag below the body. 
+## Loading Vue
+`<script src="vue.js"> </script>` 
+
+The simplest way to load Vue is to use the script tag.  It creates the global variable `Vue` which we will be using in the `<script>` tag below the body. 
 
 file: `0basic_example.html`
 
@@ -146,6 +149,7 @@ file: `1basic-todo.html`
 
 > In the interest of saving space, we will be skipping the <head> portion. It is the same and it needs to be present for your app to work.
 
+
 > When we have an example, please create a new html file and save it according to whatever convention you want and open it in a browser to verify what you have learned.
 
 When we open this in a browser, you will see "do something" being displayed thrice. We do not want the same message to be displayed! We want different messages and eventually we want to add our own todos.
@@ -216,7 +220,8 @@ For adding a new item to our todo list, we need to do the following things:
 1. Add the input to our `todos`
 1. Render them in our <ol>
 
-> v-on: this is the directive which handles the events. When we do a v-on:click="AddMethod", it'll run AddMethod when the element is clicked, which is exactly what is happening in our case.
+## v-on
+This directive handles events. When we do a v-on:click="AddMethod", it'll run AddMethod when the element is clicked, which is exactly what is happening in our case.
 
 For now, let's just print the user input which we get. Later, it is just one line of code which adds the item to the array.
 
@@ -228,11 +233,11 @@ At this point of time, we just need to add the todo when the user does some acti
 
 Now, we need to add the todo item to our html. You would be right if you are thinking to change the `alert` line in the AddTodo method to an array append of todos.
 
-	`this.todos.push(this.todo)`
+	this.todos.push(this.todo)
 
-> It is important to use this. syntax because scoping is a big issue here.
+> It is important to use `this.` to refer to `todos` because scoping is a big issue here and Vue won't be able to find out what todo you are referring to.
 
-> We do not need to touch the HTML because Vue is going to update the HTML based on what we have in the `todos` array.
+We did not touch the HTML because Vue is going to update the HTML based on what we have in the `todos` array. This is the beauty of front end frameworks and the beauty of Vue is that you can get started so easily in it.
 
 ## Add feature to assign task
 
@@ -253,7 +258,7 @@ Save and open the page in a browser. There is one catch, not all tasks have an a
 ## v-if 
 v-if directive will show the HTML tag only if there is a value in the object assigned to it. 
 
-## <template>
+## The template tag
 
 In our example, there is another catch, we are rendering the content just by doing `{{}}`. This begs the question as to where to place the `v-if`. This is where the `<template>` tag comes in handy. It is a blank tag which does nothing provided by Vue in this condition.
 
