@@ -28,3 +28,7 @@ This book is inspired from the [official guide](http://vuejs.org), it can be tho
 ## Availability
 
 This book is FOSS at [Github](https://github.com/thewhitetulip/intro-to-vuejs)
+
+## Supporting code
+
+The supporting code is available [here](https://github.com/thewhitetulip/intro-to-vuejs-code)
