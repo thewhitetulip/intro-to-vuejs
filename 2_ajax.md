@@ -2,7 +2,7 @@
 
 Ajax is short for Async Javascript and XML. It is used to develop dynamic apps which do not require us to refresh the page to update information. Vue does not support AJAX with it's own library, but we are free to use existing libraries like axios/loadash/vue-resource. We will be using vue-resource in this book.
 
-The source code is available on Github. You can clone the repo and delete the logic part and start fresh [http://github.com/thewhitetulip/go-vue-events](go-vue-events).
+The source code is available on Github. You can clone the repo and delete the logic part and start fresh [go-vue-events](http://github.com/thewhitetulip/go-vue-events).
 
 In the first chapter we saw how to use `v-if`, `v-on`, `<template>` and `v-bind`. The UI which we have to build is simple, we want to build an simple event manager which will interact with the backend.
 
@@ -97,7 +97,7 @@ Reading the documentation of vue-resource, we see that this is the syntax to sen
     },
     
     deleteEvent: function (index) {
-      if (confirm('Really want to delete？')) {
+      if (confirm('Really want to delete?')) {
         console.log(index);
         this.$http.delete('/api/events/' + index)
           .then(response => response)
@@ -126,7 +126,7 @@ We now can use web components to represent our list. We do the following:
 	        <button class="btn btn-xs btn-danger" v-on:click="deleteEvent(index)">Delete</button> </span>',
 	  methods: {  
 	     deleteEvent: function (index) {
-	      if (confirm('Really want to delete？')) {
+	      if (confirm('Really want to delete?')) {
 	        console.log(index);
 	        this.$http.delete('/api/events/' + index)
 	          .then(response => response)
@@ -143,3 +143,15 @@ We now can use web components to represent our list. We do the following:
 	});
 	
 This is fine, but there is one problem, there is noway for Vue to know where the `events` array exists which we are trying to splice. This is because the array was created in the Vue instance and thus can't be accessed by using this. We need to use `app.todos` to access it.
+
+## The API
+This example code does HTTP calls. It expects an API to be present. If you know how to build an API, you would need to build the following things:
+
+1. DELETE /api/events/{id} : This will delete the event from the DB
+1. GET /api/events: will fetch all events
+1. POST /api/events: This will add the new event
+
+You can use any language to build the backend, if you want to see how to build a backend in Go, please refer to my [Go book](https://github.com/thewhitetulip/web-dev-golang-anti-textbook/), you can read the server code in `server.go`.
+
+## Pitfalls
+GET and DELETE requests are simple, they are basically just hitting the API without any other data. POST is a bit complicated. This is why in the line `this.$http.post('/api/events/', this.event,{emulateJSON: true})`, we are using `{emulateJSON:true}`, bad things happen if we don't use this. It is because the backend API expects to talk in JSON and the default POST doesn't use JSON to talk, it talks like this title=sometitle&content=thiscontent. When we give the `emulateJSON:true`, we tell Vue to send it as JSON.
