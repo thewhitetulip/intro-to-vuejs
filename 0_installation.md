@@ -4,9 +4,9 @@ Technically speaking, you do not have to install Vue. You can just include Vue i
 
 It is recommended to use a CDN
 
-1. (unpkg)[https://unpkg.com/vue/dist/vue.js]
-2. (jsdelivr)[http://cdn.jsdelivr.net/vue/2.0.5/vue.js]
-3. (cloudflare)[http://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.js]
+1. [unpkg](https://unpkg.com/vue/dist/vue.js)
+2. [jsdelivr](http://cdn.jsdelivr.net/vue/2.0.5/vue.js)
+3. [cloudflare](http://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.js)
 
 It is not mandatory to use a CDN, you can just host the file to your webserver. but it makes sense only when you are using the app internally and it is not deployed on the Internet. It is always useful to use a CDN, because that way, when the app is deployed, there are chances that the user has the script already cached.
 
