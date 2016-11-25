@@ -354,7 +354,7 @@ We want to show each element in the array `todos` and want to bind the current e
 
 **Note:** Usually Vue templates are long, hence we have to use the '\' delimiter to have multi line templates. 
 
-> If you want to check a sample app, check [http://github.com/thewhitetulip/go-vue-events](go-vue-events), the code uses a component based model to delete an event using a HTTP request. Backend can be written in any language, this project's backend is written in Go. We will be refering to it in a future chapter. But it is a good idea to jump into reading other projects while learning a language/framework so that you would develop your logic.
+> If you want to check a sample app, check [go-vue-events](http://github.com/thewhitetulip/go-vue-events), the code uses a component based model to delete an event using a HTTP request. Backend can be written in any language, this project's backend is written in Go. We will be refering to it in a future chapter. But it is a good idea to jump into reading other projects while learning a language/framework so that you would develop your logic.
 
 
 ## v-bind
