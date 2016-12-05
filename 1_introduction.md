@@ -298,7 +298,7 @@ Add the following line after the `push` of the AddTodo.
 
 	this.todo = {title:'', text:'', assign:''}
 
-This will reset the input elements.
+This will reset the input elements. This plays an important role apart from resetting the input tags. If we do not reset `this.todo`, then, we are binding each new element which we add in. Try doing it yourself once and then you'll understand the real issue.
 
 ## Using Components
 
