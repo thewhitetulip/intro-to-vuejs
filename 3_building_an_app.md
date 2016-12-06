@@ -1,6 +1,6 @@
 # Building an app
 
-> This chapter makes two assumptions, first is that you know enough JS to understand the code displayed below and that you have written a web app before, if you haven't written a web app, you can read (Write webapps in Go without using a framework)[https://github.com/thewhitetulip/web-dev-golang-anti-textbook/]
+> This chapter makes two assumptions, first is that you know enough JS to understand the code displayed below and that you have written a web app before, if you haven't written a web app, you can read [Write webapps in Go without using a framework](https://github.com/thewhitetulip/web-dev-golang-anti-textbook/)
 
 We will be building a full app in this chapter by using Vue. You will need the download the code from Github. That is the basic HTML which we have to transform using Vue.
 
@@ -30,7 +30,7 @@ As we said above, we will be managing the state of our html via vue, this means 
 For running the html, you have to use a webserver, otherwise the static files won't be found. When we do not use webservers for rendering static files, they have an absolute path like `./scripts/jquery.js` but with a webserver in hand, the path is `/scripts/js`, without a webserver to render `/script/`, our web page would not render properly. 
 
 > Server to use 
-You are free to use any webserver you would like, `python2 -m SimpleHTTPServer`, `python3 -m http.server` or (f)[http://github.com/thewhitetulip/f]. I wrote f, it is a 0 configuration server which takes only the port number as an argument, `go get github.com/thewhitetulip/f` would install it, `f 9090` would run a server on port 9090, it is faster than the python alternative.
+You are free to use any webserver you would like, `python2 -m SimpleHTTPServer`, `python3 -m http.server` or [f](http://github.com/thewhitetulip/f). I wrote f, it is a 0 configuration server which takes only the port number as an argument, `go get github.com/thewhitetulip/f` would install it, `f 9090` would run a server on port 9090, it is faster than the python alternative.
 
 Running the sever on port 9090 in the `initial` folder and navigate to http://localhost:9090/tasks.html and take a look at the page. You will need to start understanding how to manage the data architecture, for that, you'd need to look at what all data is bring displayed. That'll give us a starting point regarding what variables to create. Do make a note that Vue is going to handle all the data portion of our html page, everything should be done via Vue that means the state of the html page would change as the variables which we define in Vue will change.
 
