@@ -1,6 +1,6 @@
 # Building an app
 
-> This chapter makes two assumptions, first is that you know enough JS to understand the code displayed below and that you have written a web app before, if you haven't written a web app, you can read [Write webapps in Go without using a framework](https://github.com/thewhitetulip/web-dev-golang-anti-textbook/)
+> This chapter makes two assumptions, first is that you know enough JS to understand the code displayed below and that you have written a web app before, if you haven't written a web app, you can read [Write webapps in Go without using a framework](https://github.com/thewhitetulip/web-dev-golang-anti-textbook/) to learn how to write one in Go or any other book if you prefer another language.
 
 We will be building a full app in this chapter by using Vue. You will need the download the code from Github. That is the basic HTML which we have to transform using Vue.
 
@@ -26,13 +26,15 @@ Then, we create a Vue app. Since we are going to write a backend in Go, we need 
 
 As we said above, we will be managing the state of our html via vue, this means understanding what data elements we create in our Vue app. These "data elements" would be simple variables inside the `data` block. 
 
-> Running the html
+### Running the html
+
 For running the html, you have to use a webserver, otherwise the static files won't be found. When we do not use webservers for rendering static files, they have an absolute path like `./scripts/jquery.js` but with a webserver in hand, the path is `/scripts/js`, without a webserver to render `/script/`, our web page would not render properly. 
 
-> Server to use 
-You are free to use any webserver you would like, `python2 -m SimpleHTTPServer`, `python3 -m http.server` or [f](http://github.com/thewhitetulip/f). I wrote f, it is a 0 configuration server which takes only the port number as an argument, `go get github.com/thewhitetulip/f` would install it, `f 9090` would run a server on port 9090, it is faster than the python alternative.
+### Server to use 
 
-Running the sever on port 9090 in the `initial` folder and navigate to http://localhost:9090/tasks.html and take a look at the page. You will need to start understanding how to manage the data architecture, for that, you'd need to look at what all data is bring displayed. That'll give us a starting point regarding what variables to create. Do make a note that Vue is going to handle all the data portion of our html page, everything should be done via Vue that means the state of the html page would change as the variables which we define in Vue will change.
+You are free to use any webserver you would like, `python2 -m SimpleHTTPServer`, `python3 -m http.server` or [the f server](http://github.com/thewhitetulip/f). I wrote f, it is a 0 configuration server which takes only the port number as an argument, `go get github.com/thewhitetulip/f` would install it, `f 9090` would run a server on port 9090, it is faster than the python alternative.
+
+Running the sever on port `9090` in the `initial` folder and navigate to `http://localhost:9090/tasks.html` and take a look at the page. You will need to start understanding how to manage the data architecture, for that, you'd need to look at what all data is bring displayed. That'll give us a starting point regarding what variables to create. Do make a note that Vue is going to handle all the data portion of our html page, everything should be done via Vue that means the state of the html page would change as the variables which we define in Vue will change.
 
 The first variable we'll create is to store the 'Pending'. We'll call it navigation. (It is a bad variable name, you can change it to anything you want).
 
@@ -86,7 +88,12 @@ Before we hook this up with a RESTful API, we would need to render some data, th
 
 Modify the `tasks` element.
 	
-	tasks:[task:{ID:"1", title:"title1", content:"content1", category:'dummy', priority:'1', comments:[comment:{content:"dummy comment", author:"sherlock", created:"2016-12-3"},], showComment:false},task:{ID:"1", title:"title2", content:"content1", category:'dummy', priority:'1', comments:[comment:{content:"dummy comment", author:"sherlock", created:"2016-12-3"},], showComment:false},]
+	tasks:[
+	task:{ID:"1", title:"title1", content:"content1", category:'dummy', priority:'1', 
+	comments:[comment:{content:"dummy comment", author:"sherlock", created:"2016-12-3"},],
+	showComment:false},task:{ID:"1", title:"title2", content:"content1", category:'dummy',
+	priority:'1', comments:[comment:{content:"dummy comment", author:"sherlock", 
+	created:"2016-12-3"},], showComment:false},]
 
 We will be binding input tags to elements inside the `task` variable. For instance, the input tag which takes the title of the task would be bound to `task.title`, other input tags are bound to corresponding attributes to our `task` object.
 
@@ -176,14 +183,17 @@ select tag
 
 We need categories to be rendered, thus we will create a variable `categories`
 
-	category:{categoryID:'',categoryName:'', taskCount:''}, // data structure to store category
-	categories:[{categoryID:'1',categoryName:'dummy', taskCount:'2'},{categoryID:'2',categoryName:'Batman', taskCount:'12'}], // stores all the categories
+	category:{categoryID:'',categoryName:'', taskCount:''}, 
+	categories:[
+	{categoryID:'1',categoryName:'dummy', taskCount:'2'},
+	{categoryID:'2',categoryName:'Batman', taskCount:'12'}], 
 
 As we did for the task, we have two objects, category and categories. One will be bound to the input tag when we take category name and another would be the list of categories in our current instance.
 
 	<select name="category" class="dropdown" v-model="task.category">
 		<template v-for="category in categories">
-			<option v-bind:value="category.categoryName"> ${ category.categoryName } </option>
+			<option v-bind:value="category.categoryName">
+			${ category.categoryName } </option>
 		</template>
 	</select>
 	
@@ -205,7 +215,8 @@ Add a new `methods` element to our app
 	methods: {
 		addTask: function (item) {
 		    this.tasks.push(this.task);
-		    this.task = {title:"", content:"", category:'', priority:'', comments:[], showComment:false}
+		    this.task = {title:"", content:"", category:'', 
+		    priority:'', comments:[], showComment:false}
 		    $('#addNoteModal').modal('hide');
 		  }
 	}
