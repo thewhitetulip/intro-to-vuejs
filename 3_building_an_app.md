@@ -1,26 +1,42 @@
 # Building an app
 
-We will be building a full app in this chapter by using Vue. You will need the download the code from Github. That is the basic HTML which we have to transform.
+> This chapter makes two assumptions, first is that you know enough JS to understand the code displayed below and that you have written a web app before, if you haven't written a web app, you can read (Write webapps in Go without using a framework)[https://github.com/thewhitetulip/web-dev-golang-anti-textbook/]
 
-It is the HTML for a todo list manager. It is really simple, we have a `<div id="timeline">` where we are listing the tasks. We have a navigation drawer where we have the list of categories and we can select which one we want to select. Each task can either be pending/deleted/completed.
+We will be building a full app in this chapter by using Vue. You will need the download the code from Github. That is the basic HTML which we have to transform using Vue.
+
+We should first understand the need of using Vue. Without using a framework like Vue, we can either have a pure HTML app which requires the pages to be reloaded for every transaction which happens at the backend, or we can use jQuery to handle AJAX requests which would change the state of our webapp whenever we send a request to the webserver. The jQuery way works for small applications, but as the application becomes large, it is a bit difficult to maintain. Thus, Vue.js was created, it provides us a minimalist framework to build a single page app along with some supporting libraries.
+
+In the code repository, open the folder named chapter3, it contains two folders, initial and final. In the `initial` folder, there is a file called `tasks.html` which is the HTML for a simple todo list manager. `final` contains the code which we will write through this chapter. I recommend not reading it until you have finished this chapter.
+
+The structure of the html page is simple, `timeline` block where we are listing the tasks, a navigation drawer where which has a list of clickable categories, the menu bar will display what type of tasks are being displayed.
+
+Each task can either be pending/deleted/completed. One category can have multiple tasks, category names should be unique.
 
 First of all, add the script tag to inclue Vue at the bottom of the body tag.
 
-Currently, the `tasks` id is attached to the body tag, we need to change this since it is not recommended to attach a Vue object to the body tag, we will wrap everything inside the body tag with a span like this. <span id="tasks"></span>
+Currently, the `tasks` id is attached to the body tag, we need to change this since it is not recommended to attach a Vue object to the body tag, we will wrap everything inside the body tag with a span like this. `<span id="tasks"></span>`
 
-Then, we create a Vue app. Since we are going to write a backend in Go, we need the delimiter to be ${} as it would interfere with Go's templating system. Feel free to skip changing the delimiters if you aren't using Go for your backend.
+Then, we create a Vue app. Since we are going to write a backend in Go, we need the delimiter to be `${}` as it would interfere with Go's templating system. Feel free to skip changing the delimiters if you aren't using Go for your backend.
 
 	var app = new Vue({ 	
-		//~ this is the element in the html page where Vue will be anchored
+		// this is the element in the html page where Vue will be anchored
 		el: '#tasks',
 		delimiters: ['${','}']
 	)}
 
-Now we need to understand how many variables we need to create. Start by running the html and seeing what all data is bring displayed. That'll give us a starting point regarding what variables to create. Do make a note that Vue is going to handle all the data portion of our html page, everything should be done via Vue that means the state of the html page would change as the variables which we define in Vue will change.
+As we said above, we will be managing the state of our html via vue, this means understanding what data elements we create in our Vue app. These "data elements" would be simple variables inside the `data` block. 
 
-The first variable we'll create is to store the 'Pending'. We'll call it navigation.
+> Running the html
+For running the html, you have to use a webserver, otherwise the static files won't be found. When we do not use webservers for rendering static files, they have an absolute path like `./scripts/jquery.js` but with a webserver in hand, the path is `/scripts/js`, without a webserver to render `/script/`, our web page would not render properly. 
 
-> In this chapter, we will be adding or editing elements of the above declaration of Vue, to save space, we won't be writing the entire block, just copy paste at the relevant portions
+> Server to use 
+You are free to use any webserver you would like, `python2 -m SimpleHTTPServer`, `python3 -m http.server` or (f)[http://github.com/thewhitetulip/f]. I wrote f, it is a 0 configuration server which takes only the port number as an argument, `go get github.com/thewhitetulip/f` would install it, `f 9090` would run a server on port 9090, it is faster than the python alternative.
+
+Running the sever on port 9090 in the `initial` folder and navigate to http://localhost:9090/tasks.html and take a look at the page. You will need to start understanding how to manage the data architecture, for that, you'd need to look at what all data is bring displayed. That'll give us a starting point regarding what variables to create. Do make a note that Vue is going to handle all the data portion of our html page, everything should be done via Vue that means the state of the html page would change as the variables which we define in Vue will change.
+
+The first variable we'll create is to store the 'Pending'. We'll call it navigation. (It is a bad variable name, you can change it to anything you want).
+
+> To save space, we won't be writing the entire Vue block here so just copy paste the snippets at relevant positions.
 
 Add a new variable,
 
@@ -28,18 +44,19 @@ Add a new variable,
 		navigation='Pending',	
 	}
 
-At the same time, we edit the 'Pending' from the html page to ${navigation}.
+At the same time, we edit the 'Pending' from the html page to `${navigation}`.
 
 Save and refresh.
 
 the html should look like this
 
-	<p class="navbar-brand" href="/pending">
+	<a class="navbar-brand" >
 		${navigation}
-	</p>
+	</a>
 	
+We now directly jump to the `timeline`. Timeline block contains all our tasks. It currently has multiple blocks of html, each block  `<div class="note" id="1"></div>` corresponds to one `task`. 
 
-We now directly jump to the `timeline`. The timeline id will be where our actual content rests. It currently consists of multiple blocks of html, each block starts with `<div class="note" id="1">`. We will be using Vue to modify that.
+We will be using Vue to render the tasks from a JSON which we eventually fetch from the server using RESTful APIs.
 
 These are the elements inside each task
 
@@ -55,27 +72,29 @@ These are the elements inside each task
 
 Along with this, we also need to be able to toggle the visibility of our noteContent, there is a button at the top right corner near the note title, when we click that, it should toggle visibility of noteContent. We will be using Vue to do that. This is why, we need a boolean variable to store the state of visibility. that's where `showComment` comes into picture. It's default value is false. When we click it, it should turn to true.
 
-We need to create an object to enclose everything. Add these two elements to the data part of the Vue instance.
+> For those who are coming from a jQuery background, it would be difficult at first to stop thinking in the jQuey way, but it is important to start thinking in the "Vue" way of doing things.
+
+Since Vue is going to render elements, we need to create an object to store the data which we want to render.
+
+Add these two elements to the data part of the Vue instance. These are the individual `task` and `comment` instances. We also have the `tasks` array which stores all the data attributes associated with each task.
 	
 	task:{ID:"", title:"", content:"", category:'', priority:'', comments:[], showComment:false},
 	comment:{content:"", author:"", created:""},
-	
-But, this is a task variable, we need an array of this variable to store our tasks.
 	tasks: [] // stores all the tasks
 
-use this as sample data. Add this element to the data part of our Vue instance.
+Before we hook this up with a RESTful API, we would need to render some data, thus, we use sample data to get things working. Once we confirm that our front end works correctly, we can hook up the server. 
+
+Modify the `tasks` element.
 	
 	tasks:[task:{ID:"1", title:"title1", content:"content1", category:'dummy', priority:'1', comments:[comment:{content:"dummy comment", author:"sherlock", created:"2016-12-3"},], showComment:false},task:{ID:"1", title:"title2", content:"content1", category:'dummy', priority:'1', comments:[comment:{content:"dummy comment", author:"sherlock", created:"2016-12-3"},], showComment:false},]
 
-	
-> Note that the `task` variable would store the information of one task, that is, we will bind the `task.title` to our input form's title field. Primarily `task` will be used only when we take input. But, the `tasks` variable is the most important variable in our example as it is going to store everything. It is the main variable.
+We will be binding input tags to elements inside the `task` variable. For instance, the input tag which takes the title of the task would be bound to `task.title`, other input tags are bound to corresponding attributes to our `task` object.
 
-	<span v-for="(task, taskIndex) in tasks">
+`tasks` is the main variable which will control what is currently getting displayed in our page.
 
-We cycle in the array in a span tag.
+We cycle in the array in a span tag. `<span v-for="(task, taskIndex) in tasks">`
 
-Since we can't use ${} inside a tag like this <div id="${task.ID}"> we have to end up binding the id field like this 
-`<div class="note" v-bind:id="task.ID">`
+Since we can't use `${}` inside a tag like  `<div id="${task.ID}">` we have to bind the id field like this `<div class="note" v-bind:id="task.ID">`
 
 We then turn to changing the elements of the task.
 
@@ -83,7 +102,7 @@ We then turn to changing the elements of the task.
 1. "This is a task" with `${task.content}`
 1. "1 out of 3 is completed" with `${task.completed}`
 
-Now, comments.
+Next stop, comments.
 
 We have more than one comments per task possible, thus, we will be cycling through comments too.
 
@@ -100,17 +119,17 @@ Now, we move to the bottom of the task,
 1. "Priority: 3" with `Priority: ${task.priority}`.
 1. "dummy" with `${task.category}`
 
-delete the other note tag. We do not need any more elements because we are going to cycle through the `tasks` object we created in our Vue instance and have Vue handle the html on its own.
+Delete the other note tag. If you notice, we will have one block per task, when we generate html using our server, we will need to create a template and render the data according to task list which we get from the server, but we do not need to do all that when we use Vue, the framework takes care of the html, we just need to tell it what we want.
 
 Save and refresh the page, you shall see that the tasks are rendering properly.
 
 Now, we will be fine tuning the changes we made and add a few more parameters wherever required.
 
-since it is not necessary that every task's content would be a markdown tasklist, we need to display the '1 out of 3 completed' message only if it exists, thus we wrap it in a template tag and use the `v-if` directive, this means that the template would be rendered only when there is value inside task.completed. 
+Since it is not necessary that every task's content would be a markdown tasklist, we need to display the '1 out of 3 completed' message only if it exists, thus we wrap it in a template tag and use the `v-if` directive, this means that the template would be rendered only when there is value inside task.completed. 
 
 	<template v-if="task.completed">${task.completed}</template>
 
-A keep observer might note that what if there are no tasks created, what do we show then? As of now, there is nothing displayed on the page, this is bad from the UX perspective because the user does not understand what is happening and if our app is not intuitive then users will hate it.
+A keep observer might note that what we have not handled the case if there are no tasks. We show a blank page in that case. This is bad from the UX perspective because the user does not understand what is happening and if our app is not intuitive then users will hate it.
 
 Let's think about what we will be doing in this scenario. our logic would be simple to handle this case, 
 
@@ -128,7 +147,7 @@ It is time to start interacting with the page via events. We did our basic job u
 
 ## Adding a new task
 
-Locate the html comment <!-- Add note modal -->
+Locate the html comment `<!-- Add note modal -->`
 
 We first need to change `<form enctype="multipart/form-data" action="/add/" method="POST">`. It was an app written in pure html and thus it used to call the HTTP endpoint /add/ with the POST request.
 
@@ -136,7 +155,7 @@ We will remove the `action=` and add `v-on:submit.prevent="onSubmit"`.
 
 The reason why we remove the `action=` is that we do not want the page to be redirected to /add/ as form normally does. Plus, when we click submit, we want to prevent the form from being submitted. 
 
-always remember, `Vue does everything`.
+Always remember, `Vue does everything relatd to html`.
 
 our form tag looks like this `<form enctype="multipart/form-data" method="POST" v-on:submit.prevent="onSubmit">`
 
