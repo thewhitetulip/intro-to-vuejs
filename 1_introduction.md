@@ -1,24 +1,36 @@
+# Interactive web applications
+The Internet has come a long way since the first website http://cern.ch was created. Earlier, it used to be a platform for sharing research between scientists, which was later adapted for building one of the most tranformative means of communication and a platform which opened the world up to a large range of possibilities.
+
+With the large scale possibilities, the user expectations have sky rocketed, back in the early 2000s even Google's webpages were having barely any interactivity, when they started using auto-complete it was a _big_ deal. But now, users just expect auto complete and a host of other features which make the webapp interactive, what we mean by interactive is that the user should not need to refresh the page for updating the content. The content should be updated automatically.
+
+There are two aspects to this interactivity,
+
+1. Websockets: This comes into picture when you want to keep _all_ the open tabs in sync. Let's say the same user has logged into your webapp using three different browser, you'd use websockets to keep all those pages updated. 
+2. AJAX: When you login to a todo manager, it doesn't refresh the page, but just updates the state of the website depending on the action you took (i.e. login), it will then show you the pending tasks.
+
 # What is Vue?
 
-Vue is a library, the core library is focused on the View layer of the classic MVC model, but along with [supporting libraries](https://github.com/vuejs/awesome-vue#libraries--plugins), one can easily build a single page app in Vue. Vue provides tools for simplifying the development. We will use some of them as we go ahead in this book.
+Vue is a library for writing such applications. Vue is technically a library focused on the View layer of the classic MVC model, along with [supporting libraries](https://github.com/vuejs/awesome-vue#libraries--plugins), one can easily build a interactive webapp. Vue provides tools for simplifying the development but you do not have to use any of those to get started, speaking from experience, I've always found it better to start without using any tool "vanilla" and later, when we realize _why_ the tools were created, then we can start using them.
 
-In the installation chapter, we saw a basic example using Vue. Let's get into more detail.
+Let's continute the example in the end of the installation chapter.
 
 ## Loading Vue
+For using Vue, we first have to load it. Since it is a JS library, all we have to do to use Vue is to load it using a script tag, like we include jQuery and other libraries. `<script src="vue.js"> </script>`.  
 
-The simplest way to load Vue is to use the script tag `<script src="vue.js"> </script>`.  
-Vue loads _after_ the html page has loaded, hence we place it at the end of the body tag when including the file as a script tag. When we include the file in the script tag, a global variable by the name of `Vue` is created. We use this variable to create the new app or components.
+Do note that Vue loads _after_ the html page has loaded (this is the reason if it takes a lot of time to fetch data or do computation, the user would see your `{{code}}` because in that case it'd take Vue some time to initialize the state of the app and render the data.
 
-file: `0basic_example.html`
+That's why we place it at the end of the body tag when including the file as a script tag. If we do not include it at the bottom of the page, then it'd be loaded _before_ the html is loaded and it might not work properly. When we include the file in the script tag, a global variable by the name of `Vue` is created. We use this variable to create the new app or components.
+
+file: `chapter1/0basic_example.html`
 
 	<html>
 	<head>
-	   <script src="vue.js"> </script>
 	</head>
 	<body>
 	   <div id="app">
 	      {{ message }}
 	   </div>
+	   	<script src="vue.js"> </script>
 		<script>
 			var app = new Vue({
 				el: '#app',
@@ -30,15 +42,17 @@ file: `0basic_example.html`
 	</body>
 	</html>
 
-This is the simplest possible Vue app. The logic is simple, we have to render a message in the `<div>` tag. If you have had previous experience in template rendering then it might sound trivial enough, that we just render a variable in the tag. But things are different. Vue has done a lot of work under the hood. Vue hasn't just rendered `message`, the variable is "reactive". If the value of `message` changes, then the html would be automatically updated by Vue.
+This is the simplest possible Vue app. We are rendering the variable `message` in the `<div>` tag. If you have had previous experience in template rendering then it might sound trivial, since all rendering engines do this work. But here, things are different. Vue has done a lot of work under the hood. It hasn't _just_ rendered `message`, the variable is "reactive". If the value of `message` changes, then the html would be automatically updated by Vue. The advantage of this feature is that wheneve the value of `message` variable changes, it'd get reflected in our HTML _without_ us having to render the variable again. Vue does all the heavy lifting. All we are left with is creation of variables and maintaining the state of the app _correctly_ using the variables.
 
 To verify our claim, open the web inspecter in your browser, on Firefox do a right click on the page and click "inspect element". It shall open the web inspector. Press the escape key and the console would pop up. Set the message to any value you'd like like this, `app.message='oh my Dod, it did change.'`
 
-This proves that the value of the message variable is dynamically bound with what is being displayed in our html.
+You'd see that the html was changed. During runtime, Vue uses a diffing algorithm to make optimal changes to the DOM. It uses shadow DOM to render html, it is a feature which would come into all browsers eventually.
 
-## Delimiters
+> Note: Firefox has a developer edition (https://www.mozilla.org/en-US/firefox/developer) of it's browser which is tailored for web developers
 
-Vue uses double mustach `{{ }}` as the default templating syntax to render data in our html page. The default syntax is `['{{', '}}']`, but we can change it to whatever syntax we want. The way to do it is 
+## Syntax
+
+Since Vue works on data, it uses a special syntax to render the data, by default it is `{{ }}`, but we can change it to whatever syntax we want. The way to do it is 
 
 	var app = new Vue({
 		el: '#app',
@@ -46,9 +60,10 @@ Vue uses double mustach `{{ }}` as the default templating syntax to render data 
 			message : 'good morning'
 		},
 		delimiters: ['${', '}']
+		# this makes our syntax as ${}
 	})
 
-This is necessary while using Vue with languages which also use {{ }} for template rendering like [Go](http://golang.org)
+Change of rendering syntax is necessary while using Vue with languages which also use `{{ }}` for template rendering like [Go](http://golang.org)
 
 ## Obligatory theory
 
@@ -136,7 +151,6 @@ We start small.
 
 file: `1basic-todo.html`
 
-	<body>
 	  <div id="app4">
 	      <ol>
 	            <li>{{message}}</li>
@@ -151,10 +165,10 @@ file: `1basic-todo.html`
 	        }
 	    })
 	  </script>
-	</body>
+
 
 ####Note 
-In the interest of saving space, we will be skipping the <head> portion. It is the same and it needs to be present for your app to work.
+In the interest of saving space, we will showing just snippets. It is the same and it needs to be present for your app to work.
 
 
 **Tip**: When we have an example, please create a new html file and save it according to whatever convention you want and open it in a browser to verify what you have learned.
