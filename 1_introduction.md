@@ -5,7 +5,7 @@ With the large scale possibilities, the user expectations have sky rocketed, bac
 
 There are two aspects to this interactivity,
 
-1. Websockets: This comes into picture when you want to keep _all_ the open tabs in sync. Let's say the same user has logged into your webapp using three different browser, you'd use websockets to keep all those pages updated. 
+1. Websockets: This comes into picture when you want to keep _all_ the open tabs in sync. Let's say the same user has logged into your webapp using three different browsers, you'd use websockets to keep all those pages updated. 
 2. AJAX: When you login to a todo manager, it doesn't refresh the page, but just updates the state of the website depending on the action you took (i.e. login), it will then show you the pending tasks.
 
 # What is Vue?
