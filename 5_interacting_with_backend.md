@@ -8,7 +8,7 @@ It is time to add a server to the app. It'll fetch the tasks when we click Pendi
 
 As per our architecture, we won't be needing `pendingTasks` and `categoryTasks`. Earlier they were required if we had to store the respective tasks in there, but since we will be fetching the tasks from the server, we can do away with them.`
 
-For this book, we will be using  a server written in Go, it is http://github.com/thewhitetulip/Tasks-vue, if you want to write your own server, please feel free to write it, otherwise download and use the example code. If you want to learn writing servers, the author has written another tutorial/book http://github.com/thewhitetulip/web-dev-anti-textbook-golang.
+For this book, we will be using  a server written in Go, it is http://github.com/thewhitetulip/Tasks-vue, if you want to write your own server, please feel free to write it, otherwise download and use the example code. If you want to learn writing servers, the author has written another tutorial/book http://github.com/thewhitetulip/web-dev-golang-anti-textbook/.
 
 We will start with fetching tasks from the backend, you'll notice that we currently have everything hardcoded, as we go along in this chapter, we'll be generalizing it. At the end of this chapter, we'll have a fully working app in Vue. Do note that this is a introductory tutorial and **not** an advanced tutorial, it is assumed that after reading this tutorial, you'll either practice building apps on your own, or you'll read advanced tutorials.
 
