@@ -65,7 +65,7 @@ It is nearly same as fetch tasks, with one important difference, we are not fetc
       });
     },
 
-The next operation would be marking tasks as complete. It is exactly same as `TrasnTask` with the only difference being in the URL and the HTTP Method it uses.
+The next operation would be marking tasks as complete. It is exactly same as `TrashTask` with the only difference being in the URL and the HTTP Method it uses.
 
     CompleteTask: function (taskIndex, taskID) {
       this.$http.get('/complete-task/' + taskID).then(response => response.json()).then(result => {
@@ -212,7 +212,7 @@ For updating a task, we first need to store the task in our `this.task`, that wi
       $('#addNoteModal').modal('show');
     },
 
-After this call is succesfully completed, the user will see the `Update Task` button which will call our `UpdateTask` method.
+After this call is successfully completed, the user will see the `Update Task` button which will call our `UpdateTask` method.
 
     UpdateTask: function (item) {
       this.$http.post('/task/', this.task, {
