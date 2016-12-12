@@ -289,4 +289,4 @@ We then have the task of displaying tasks of the particular category. The `@clic
 	  this.tasks = [];
 	},
 
-What we will have to do here is that assign `this.tasks` to a call to the backend API to load the particular tasks
+What we will have to do here is that assign `this.tasks` to a call to the backend API to load the particular tasks.
