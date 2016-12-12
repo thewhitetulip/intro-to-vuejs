@@ -21,3 +21,31 @@ We have the following data flow:
 	1. Go back to the server and fetch related tasks
 		
 This means that in our architecture, we only go back to the server when we need to fetch data, modifying data is done in place after sending the modified data back to the server and if the server responds back with a 200 status code which means everything went fine on the server.
+
+
+	"/task/", Methods("GET") Fetches a new task
+	"/task/", Methods("PUT") Inserts a new task
+	"/task/", Methods("POST") Updates a task
+	"/task/{id}", Methods("DELETE") deletes the task with id
+
+	"/deleted/", Methods("GET") Fetches all deleted tasks
+	"/completed/", Methods("GET") Fetches all completed tasks
+
+	"/categories/", Methods("GET") Fetches all categories of the logged in user
+	"/category/{category}", Methods("GET")  Fetches tasks of category 'category'
+	"/category/{category}", Methods("DELETE") Deletes task 'category'
+	"/category/{category}", Methods("POST") Updates category name 'category'
+	"/category/", Methods("PUT") Adds a new category
+
+	"/complete-task/{id}", Methods("GET") Marks task #id as complete
+	"/incomplete-task/{id}", Methods("GET") Marks task #id as incomplete
+	"/restore-task/{id}", Methods("GET") Restores task #id as pending
+
+	"/comment/", Methods("PUT") Adds a comment
+	"/comment/{id}", Methods("DELETE") Deletes comment #id
+
+	"/login/", Methods("POST", "GET") Login; GET sends status 200 if user is logged in, POST will read the form value and update status accordingly
+	"/logout/", Methods("GET") Logs the user out.
+	"/signup/", Methods("PUT") Signup page
+
+This is the server backend, you can see it in `chapter5/final/Tasks-vue/main.go`.
