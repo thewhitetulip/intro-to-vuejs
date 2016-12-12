@@ -8,7 +8,9 @@ Refer the [official docs](http://vuejs.org) for more details.
 
 ## Why this book?
 
-While learning Vue, I was a total newbie to front end development. This is the book I wish existed when I was learning front end dev with Vue. A book which teaches _how to apply_ the knowledge. Read the [wiki](http://github.com/thewhitetulip/intro-to-vuejs/wiki) for more details.
+This book originated from the lack of resources on the Internet which would teach how to write an app with Vue using example. Read the [wiki](http://github.com/thewhitetulip/intro-to-vuejs/wiki) for more details.
+
+In this book, you'd build a todo list manager in Vue, the basic html is present in the code section.
 
 ## Contributing
 
