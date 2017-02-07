@@ -200,7 +200,7 @@ The first one is just a loop over arrays, the second one loops over the array _a
 
 We are going to need the index for our delete function, hence we use the second iteration of `v-for`.
 
-	<li v-for="(todo, index)">{{ todo.text }}</li>
+	<li v-for="(todo, index) in todos">{{ todo.text }}</li>
 
 Anything that starts with `v-` is a directive. It is evaluated by Vue. If something is wrong, it will complain in the JS console which we checked few lines back. 
 
