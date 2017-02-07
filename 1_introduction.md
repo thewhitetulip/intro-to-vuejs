@@ -249,7 +249,7 @@ There are two changes which need to be done to the html part of the page. First 
 
 	<ol>
 	      <li v-for="(todo, index) in todos">
-	          {{ todo.title }} : {{ todo.text }}: {{ todo.assign }}
+	          {{ todo.title }} : {{ todo.text }}
 	      </li>
 	</ol>
 
@@ -298,7 +298,7 @@ In our example, there is another catch, we are rendering the content just by doi
 Make the following change to the HTML
 
     {{ todo.title }} : {{ todo.text }} 
-    <template v-if="todo.assign"> {{ :todo.assign }}</template>
+    <template v-if="todo.assign">: {{ todo.assign }}</template>
 
 This will render `todo.assign` only if the task has the value in the object. 
 
