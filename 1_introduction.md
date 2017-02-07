@@ -153,8 +153,10 @@ file: `1basic-todo.html`
 
 	  <div id="app4">
 	      <ol>
-	            <li>{{message}}</li>
-	      </ol>
+	            <li>{{todo}}</li>
+		    <li>{{todo}}</li>
+		    <li>{{todo}}</li>
+      </ol>
 	  </div>
 	  
 	  <script>
@@ -192,7 +194,7 @@ Earlier we had one variable `todo`, but since we want to display multiple messag
 
 Doing this bounds the `todos` array to the current `Vue` instance named `app4`. This creates the array of tasks which will be showed on the html page. For that to happen, we need to change the HTML page as well.
 
-Instead of `<li>{{message}}</li>`, we will have to now display an array. Vue provides us with a `for` construct.
+Instead of `<li>{{todo}}</li>`, we will have to now display an array. Vue provides us with a `for` construct.
 
 ### v-for
 v-for has two syntaxes, `v-for="item in items"` or `v-for="(item, index)" in items`.
