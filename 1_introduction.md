@@ -153,8 +153,10 @@ file: `1basic-todo.html`
 
 	  <div id="app4">
 	      <ol>
-	            <li>{{message}}</li>
-	      </ol>
+	            <li>{{todo}}</li>
+		    <li>{{todo}}</li>
+		    <li>{{todo}}</li>
+      </ol>
 	  </div>
 	  
 	  <script>
@@ -192,7 +194,7 @@ Earlier we had one variable `todo`, but since we want to display multiple messag
 
 Doing this bounds the `todos` array to the current `Vue` instance named `app4`. This creates the array of tasks which will be showed on the html page. For that to happen, we need to change the HTML page as well.
 
-Instead of `<li>{{message}}</li>`, we will have to now display an array. Vue provides us with a `for` construct.
+Instead of `<li>{{todo}}</li>`, we will have to now display an array. Vue provides us with a `for` construct.
 
 ### v-for
 v-for has two syntaxes, `v-for="item in items"` or `v-for="(item, index)" in items`.
@@ -200,7 +202,7 @@ The first one is just a loop over arrays, the second one loops over the array _a
 
 We are going to need the index for our delete function, hence we use the second iteration of `v-for`.
 
-	<li v-for="(todo, index)">{{ todo.text }}</li>
+	<li v-for="(todo, index) in todos">{{ todo.text }}</li>
 
 Anything that starts with `v-` is a directive. It is evaluated by Vue. If something is wrong, it will complain in the JS console which we checked few lines back. 
 
@@ -249,7 +251,7 @@ There are two changes which need to be done to the html part of the page. First 
 
 	<ol>
 	      <li v-for="(todo, index) in todos">
-	          {{ todo.title }} : {{ todo.text }}: {{ todo.assign }}
+	          {{ todo.title }} : {{ todo.text }}
 	      </li>
 	</ol>
 
@@ -298,7 +300,7 @@ In our example, there is another catch, we are rendering the content just by doi
 Make the following change to the HTML
 
     {{ todo.title }} : {{ todo.text }} 
-    <template v-if="todo.assign"> {{ :todo.assign }}</template>
+    <template v-if="todo.assign">: {{ todo.assign }}</template>
 
 This will render `todo.assign` only if the task has the value in the object. 
 
