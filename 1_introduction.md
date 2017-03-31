@@ -232,7 +232,7 @@ We add the definition of `todo` and the methods as stated below:
 	data: {
 	    todo: {title: '', text:''},
 	    todos: [
-	        {title: 'Lean JS' , text: "What is JS?"},
+	        {title: 'Learn JS' , text: "What is JS?"},
 	        {title:'Learn vue',  text: "Vue has nice docs!"},
 	        {title:'Build something',  text: "what to build?"}
 	    ]
