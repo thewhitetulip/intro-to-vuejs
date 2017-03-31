@@ -208,7 +208,7 @@ Anything that starts with `v-` is a directive. It is evaluated by Vue. If someth
 
 > **Always open the JS console while writing a vue app**
 
-When the loop evaluates, `todo` will take one value at a time till it reaches th end of todos, the index will do the same about the position of the value in the `todos` array.
+When the loop evaluates, `todo` will take one value at a time till it reaches the end of todos, the index will do the same about the position of the value in the `todos` array.
 
 ## Getting User Input
 
