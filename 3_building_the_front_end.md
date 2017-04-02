@@ -12,7 +12,7 @@ The structure of the html page is simple, `timeline` block where we are listing 
 
 Each task can either be pending/deleted/completed. One category can have multiple tasks, category names should be unique.
 
-First of all, add the script tag to inclue Vue at the bottom of the body tag.
+First of all, add the script tag to include Vue at the bottom of the body tag.
 
 Currently, the `tasks` id is attached to the body tag, we need to change this since it is not recommended to attach a Vue object to the body tag, we will wrap everything inside the body tag with a span like this. `<span id="tasks"></span>`
 
