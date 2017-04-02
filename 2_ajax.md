@@ -14,7 +14,7 @@ Just a brief overview of the HTML:
 
 `<event-item v-for="(event,index) in events" :event="event" :index="index"></event-item>`
 
-This would be our custom component which we define in app.js file. We include this file _after_ including Vue.js and Vue-resource. If we include this file before either of those two, then there would be errors since the script depends on both of them.
+This will be our custom component which we define in app.js file. We include this file _after_ including Vue.js and Vue-resource. If we include this file before either of those two, then there would be errors since the script depends on both of them.
 
 We start with a simple Vue instance.
 
