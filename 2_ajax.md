@@ -114,7 +114,7 @@ Reading the documentation of vue-resource, we see that this is the syntax to sen
 
 The general trend is, send the HTTP request, take the response, convert it to json, if it throws an error (like when the API is not accessible) then log the error, otherwise do some action push the new element to the array or remove the element from the array.
 
-We now can use web components to represent our list. We do the following:
+We can now use web components to represent our list. We do the following:
 
 	Vue.component('event-item', {
 	  props: ['event', 'index'],
