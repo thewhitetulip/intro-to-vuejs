@@ -164,7 +164,7 @@ The reason why we remove the `action=` is that we do not want the page to be red
 
 Always remember, `Vue does everything related to html`.
 
-our form tag looks like this `<form enctype="multipart/form-data" method="POST" v-on:submit.prevent="onSubmit">`
+Our form tag looks like this `<form enctype="multipart/form-data" method="POST" v-on:submit.prevent="onSubmit">`
 
 We will not bind our input variables with our `task` object. This is why we created the `task` object.
 
@@ -188,7 +188,7 @@ We need categories to be rendered, thus we will create a variable `categories`
 	{categoryID:'1',categoryName:'dummy', taskCount:'2'},
 	{categoryID:'2',categoryName:'Batman', taskCount:'12'}], 
 
-As we did for the task, we have two objects, category and categories. One will be bound to the input tag when we take category name and another would be the list of categories in our current instance.
+As we did for the task, we have two objects, category and categories. One will be bound to the input tag when we take category name and another will be the list of categories in our current instance.
 
 	<select name="category" class="dropdown" v-model="task.category">
 		<template v-for="category in categories">
@@ -253,12 +253,12 @@ We just pass the index of the task to this method and it'll splice that index fr
 
 	add `@click="complete(taskIndex)"` to the complete icon's tag.
 
-At this point of time, our app will have the follow this data architecture:
+At this point of time, our app will have the following data architecture:
 
 1. tasks : array will store the tasks which are currently displayed
 1. completed: array to store all completed tasks
 
-when we want to display the completed tasks, we will assign the `completed` array to `tasks`.
+When we want to display the completed tasks, we will assign the `completed` array to `tasks`.
 
 #### Completed
 

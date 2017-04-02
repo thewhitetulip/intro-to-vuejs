@@ -1,6 +1,6 @@
 # Core Concepts
 
-In the last chapter, we learned how to build an app using Vue. There are always two aspects to take care about when we start writing apps. The first one is the logic of the app or the architecture and another one is how to accomodate that architecture using the syntax which our stdlib or framework provides. It is the same in our case as well, we learned how to write an app using Vue in the earlier chapter and we built the core architecture too, which included creating the necessary variables to display content on our web page. The only thing and perhaps the most important thing which we missed was to interaction with the server.
+In the last chapter, we learned how to build an app using Vue. There are always two aspects to take care about when we start writing apps. The first one is the logic of the app or the architecture and another one is how to accomodate that architecture using the syntax which our stdlib or framework provides. It is the same in our case as well, we learned how to write an app using Vue in the earlier chapter and we built the core architecture too, which included creating the necessary variables to display content on our web page. The only thing and perhaps the most important thing which we missed was the interaction with the server.
 
 We need to design a few things before we can start hooking our front end with the backend. There are two aspects of interaction with the server
 
