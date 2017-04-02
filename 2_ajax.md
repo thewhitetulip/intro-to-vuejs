@@ -56,7 +56,7 @@ We start with a simple Vue instance.
 	
 ## Callbacks
 
-In the first chapter we saw that when we define a Vue instance, among the options is something called as `callbacks`. Mounted is one such callback. After the element has been created and inserted into the DOM, it is called mounted. Immediately after the element is mounted, which means our app is being used, we want to fetch our events and assign the array we fetch to the array we defined in the data portion of our app.
+In the first chapter we saw that when we define a Vue instance, among the options is something called `callbacks`. Mounted is one such callback. After the element has been created and inserted into the DOM, it is called mounted. Immediately after the element is mounted, which means our app is being used, we want to fetch our events and assign the array we fetch to the array we defined in the data portion of our app.
 
 We use Vue.set to set the data (events) field of the Vue instance to the events variable we will fetch from the AJAX request. As of now, we will simulate the AJAX request to ensure that the app works, once we are sure it works, then we can just replace this with an AJAX call.
 
