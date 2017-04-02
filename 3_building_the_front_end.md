@@ -67,7 +67,7 @@ These are the elements inside each task
 1. created
 1. priority
 1. 1 out of 3 is completed (this is when we display a task list in github flavoured markdown)
-1. commentslist (there can be more than one comments)
+1. commentslist (there can be more than one comment)
 	1. content
 	1. author
 	1. time
