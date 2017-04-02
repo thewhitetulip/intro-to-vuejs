@@ -162,7 +162,7 @@ We will remove the `action=` and add `v-on:submit.prevent="onSubmit"`.
 
 The reason why we remove the `action=` is that we do not want the page to be redirected to /add/ as form normally does. Plus, when we click submit, we want to prevent the form from being submitted. 
 
-Always remember, `Vue does everything relatd to html`.
+Always remember, `Vue does everything related to html`.
 
 our form tag looks like this `<form enctype="multipart/form-data" method="POST" v-on:submit.prevent="onSubmit">`
 
