@@ -6,7 +6,7 @@ The source code is available on Github. You can clone the repo and delete the lo
 
 In the first chapter we saw how to use `v-if`, `v-on`, `<template>` and `v-bind`. The UI which we have to build is simple, we want to build a simple event manager which will interact with the backend.
 
-There are two parts to our HTML page, the event list which will render out `events` array and another is the input tags which will enable the user to add new events. The rendered list will also allow the user to delete events.
+There are two parts to our HTML page, the event list which will render our `events` array and another is the input tags which will enable the user to add new events. The rendered list will also allow the user to delete events.
 
 We will not be focusing on the HTML part, as we have spent one chapter discussing how to write the front end code. What we will focus on in this chapter would be the AJAX part.
 
