@@ -72,7 +72,7 @@ These are the elements inside each task
 	1. author
 	1. time
 
-Along with this, we also need to be able to toggle the visibility of our noteContent, there is a button at the top right corner near the note title, when we click that, it should toggle visibility of noteContent. We will be using Vue to do that. This is why, we need a boolean variable to store the state of visibility. that's where `showComment` comes into picture. It's default value is false. When we click it, it should turn to true.
+Along with this, we also need to be able to toggle the visibility of our noteContent, there is a button at the top right corner near the note title, when we click that, it should toggle visibility of noteContent. We will be using Vue to do that. This is why, we need a boolean variable to store the state of visibility. That's where `showComment` comes into picture. It's default value is false. When we click it, it should turn to true.
 
 > For those who are coming from a jQuery background, it would be difficult at first to stop thinking in the jQuey way, but it is important to start thinking in the "Vue" way of doing things.
 
