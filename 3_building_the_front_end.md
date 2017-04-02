@@ -2,7 +2,7 @@
 
 > This chapter makes two assumptions, first is that you know enough JS to understand the code displayed below and that you have written a web app before, if you haven't written a web app, you can read [Write webapps in Go without using a framework](https://github.com/thewhitetulip/web-dev-golang-anti-textbook/) to learn how to write one in Go or any other book if you prefer another language.
 
-We will be building a full app in this chapter by using Vue. You will need the download the code from Github. That is the basic HTML which we have to transform using Vue.
+We will be building a full app in this chapter by using Vue. You will need to download the code from Github. That is the basic HTML which we have to transform using Vue.
 
 We should first understand the need of using Vue. Without using a framework like Vue, we can either have a pure HTML app which requires the pages to be reloaded for every transaction which happens at the backend, or we can use jQuery to handle AJAX requests which would change the state of our webapp whenever we send a request to the webserver. The jQuery way works for small applications, but as the application becomes large, it is a bit difficult to maintain. Thus, Vue.js was created, it provides us a minimalist framework to build a single page app along with some supporting libraries.
 
