@@ -142,7 +142,7 @@ We can now use web components to represent our list. We do the following:
 	  }
 	});
 	
-This is fine, but there is one problem, there is noway for Vue to know where the `events` array exists which we are trying to splice. This is because the array was created in the Vue instance and thus can't be accessed by using this. We need to use `app.todos` to access it.
+This is fine, but there is one problem, there is no way for Vue to know where the `events` array exists which we are trying to splice. This is because the array was created in the Vue instance and thus can't be accessed by using this. We need to use `app.todos` to access it.
 
 ## The API
 This example code does HTTP calls. It expects an API to be present. If you know how to build an API, you would need to build the following things:
