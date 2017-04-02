@@ -50,8 +50,8 @@ We start with a simple Vue instance.
 	    },
 	    
 	    deleteEvent: function(index) {
-			console.log("deleting "+ index)
-		}
+	      console.log("deleting "+ index)
+	    }
 	});
 	
 ## Callbacks
