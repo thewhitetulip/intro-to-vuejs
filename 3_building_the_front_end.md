@@ -8,7 +8,7 @@ We should first understand the need of using Vue. Without using a framework like
 
 In the code repository, open the folder named chapter3, it contains two folders, initial and final. In the `initial` folder, there is a file called `tasks.html` which is the HTML for a simple todo list manager. `final` contains the code which we will write through this chapter. I recommend not reading it until you have finished this chapter.
 
-The structure of the html page is simple, `timeline` block where we are listing the tasks, a navigation drawer where which has a list of clickable categories, the menu bar will display what type of tasks are being displayed.
+The structure of the html page is simple, `timeline` block where we are listing the tasks, a navigation drawer which has a list of clickable categories, the menu bar will display what type of tasks are being displayed.
 
 Each task can either be pending/deleted/completed. One category can have multiple tasks, category names should be unique.
 
