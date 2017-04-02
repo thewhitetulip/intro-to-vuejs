@@ -97,7 +97,7 @@ Modify the `tasks` element.
 
 We will be binding input tags to elements inside the `task` variable. For instance, the input tag which takes the title of the task would be bound to `task.title`, other input tags are bound to corresponding attributes of our `task` object.
 
-`tasks` is the main variable which will control what is currently getting displayed in our page.
+`tasks` is the main variable which will control what is currently being displayed on our page.
 
 We cycle in the array in a span tag. `<span v-for="(task, taskIndex) in tasks">`
 
