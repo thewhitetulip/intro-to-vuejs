@@ -132,7 +132,7 @@ Save and refresh the page, you shall see that the tasks are rendering properly.
 
 Now, we will be fine tuning the changes we made and add a few more parameters wherever required.
 
-Since it is not necessary that every task's content would be a markdown tasklist, we need to display the '1 out of 3 completed' message only if it exists, thus we wrap it in a template tag and use the `v-if` directive, this means that the template would be rendered only when there is value inside task.completed. 
+Since it is not necessary that every task's content would be a markdown tasklist, we need to display the '1 out of 3 completed' message only if it exists, thus we wrap it in a template tag and use the `v-if` directive, this means that the template would be rendered only when there is a value inside task.completed. 
 
 	<template v-if="task.completed">${task.completed}</template>
 
