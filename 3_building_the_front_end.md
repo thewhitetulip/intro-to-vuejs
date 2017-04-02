@@ -99,7 +99,7 @@ We will be binding input tags to elements inside the `task` variable. For instan
 
 `tasks` is the main variable which will control what is currently being displayed on our page.
 
-We cycle in the array in a span tag. `<span v-for="(task, taskIndex) in tasks">`
+We cycle through the array in a span tag. `<span v-for="(task, taskIndex) in tasks">`
 
 Since we can't use `${}` inside a tag like  `<div id="${task.ID}">` we have to bind the id field like this `<div class="note" v-bind:id="task.ID">`
 
