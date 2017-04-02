@@ -34,7 +34,7 @@ For running the html, you have to use a webserver, otherwise the static files wo
 
 You are free to use any webserver you would like, `python2 -m SimpleHTTPServer`, `python3 -m http.server` or [the f server](http://github.com/thewhitetulip/f). I wrote f, it is a 0 configuration server which takes only the port number as an argument, `go get github.com/thewhitetulip/f` would install it, `f 9090` would run a server on port 9090, it is faster than the python alternative.
 
-Running the server on port `9090` in the `initial` folder and navigate to `http://localhost:9090/tasks.html` and take a look at the page. You will need to start understanding how to manage the data architecture, for that, you'd need to look at what all data is bring displayed. That'll give us a starting point regarding what variables to create. Do make a note that Vue is going to handle all the data portion of our html page, everything should be done via Vue that means the state of the html page would change as the variables which we define in Vue will change.
+Running the server on port `9090` in the `initial` folder and navigate to `http://localhost:9090/tasks.html` and take a look at the page. You will need to start understanding how to manage the data architecture, for that, you'll need to look at what data is being displayed. That'll give us a starting point regarding what variables to create. Do make a note that Vue is going to handle all the data portion of our html page, everything should be done via Vue that means the state of the html page would change as the variables which we define in Vue will change.
 
 The first variable we'll create is to store the 'Pending'. We'll call it navigation. (It is a bad variable name, you can change it to anything you want).
 
