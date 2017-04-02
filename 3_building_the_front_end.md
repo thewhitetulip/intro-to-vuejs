@@ -95,7 +95,7 @@ Modify the `tasks` element.
 	priority:'1', comments:[comment:{content:"dummy comment", author:"sherlock", 
 	created:"2016-12-3"},], showComment:false},]
 
-We will be binding input tags to elements inside the `task` variable. For instance, the input tag which takes the title of the task would be bound to `task.title`, other input tags are bound to corresponding attributes to our `task` object.
+We will be binding input tags to elements inside the `task` variable. For instance, the input tag which takes the title of the task would be bound to `task.title`, other input tags are bound to corresponding attributes of our `task` object.
 
 `tasks` is the main variable which will control what is currently getting displayed in our page.
 
