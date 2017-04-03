@@ -2,7 +2,7 @@
 
 > Note: While working with the backend, it is advisable to open the Web Inspector, and check the console & network tab regularly. These two tabs contain all the information relate to how Vue is interacting with the server.
 
-Till the previous chapters, we learned basic concepts, now, it is time to add the functionality to talk to the server. As of now, when we run the code in chapter3, we have to start a basic server like that provided by Python to render the pages. When we add a task or category, it gets added during runtime in the JavaScript arrays. But if we refresh the page, it goes away. Also, there is a problem loading tasks related to a category.
+In the previous chapters, we learned basic concepts, now, it is time to add the functionality to talk to the server. As of now, when we run the code in chapter3, we have to start a basic server like that provided by Python to render the pages. When we add a task or category, it gets added during runtime in the JavaScript arrays. But if we refresh the page, it goes away. Also, there is a problem loading tasks related to a category.
 
 It is time to add a server to the app. It'll fetch the tasks when we click Pending/Completed/Deleted or any of the category links.
 
@@ -225,13 +225,13 @@ Here, we fetch tasks depending on the category name selected by the user. The fu
       $('#addNoteModal').modal('hide');
     },
 
-When we want to add task, we send a form entry back to the server. This is different from the pattern which was forming where we send an http request and got an array back, here, we send form data to the server. For the form value to be recognized by the server, we need to have the `emulateJSON:true` argument as the argument after the object which we want to send. **If we do not have emulateJSON set to true, server won't be able to identify that we sent a form** 
+When we want to add a task, we send a form entry back to the server. This is different from the pattern which was forming where we send an http request and got an array back, here, we send form data to the server. For the form value to be recognized by the server, we need to have the `emulateJSON:true` argument as the argument after the object which we want to send. **If we do not have emulateJSON set to true, server won't be able to identify that we sent a form** 
 
 If it is success, and if the `ishidden` value is false, then we push the task into the `tasks` array. Then, we update the category count. `ishidden` is for the feature which we have in our app wherein the user can add a task which isn't visible in the timeline, it is only visible in the category view.
 
 #### HTML changes for editing task
 
-When we see the html, we have only one modal to add task. The same modal has to be used for the updating of the task, we create a variable in our data element to keep the state of create or edit, if `isEditing` is true, we want to be able to update the task, if it is false, we'll add a new task.
+When we see the html, we have only one modal to add a task. The same modal has to be used for the updating of the task, we create a variable in our data element to keep the state of create or edit, if `isEditing` is true, we want to be able to update the task, if it is false, we'll add a new task.
 
      <template v-if="isEditing">
          <button type="button" class="btn btn-primary" v-on:click="UpdateTask(task)">Update Task</button>
@@ -440,7 +440,7 @@ For having the html for login and signup forms, we need to wrap our `<span v-id=
       });
     },
 
-We have a login form bond to `userLogin`, we send it to `/login/` and if it is success, we set the `isLoggedIn` variable to true which will display our tasks instead of the login page, this is a terrible way of logging a user in, but before jumping to using routers, I feel it is necessary to understand barebone components first. Once we are logged in, we fetch tasks and categories.
+We have a login form bound to `userLogin`, we send it to `/login/` and if it is a success, we set the `isLoggedIn` variable to true which will display our tasks instead of the login page, this is a terrible way of logging a user in, but before jumping to using routers, I feel it is necessary to understand barebone components first. Once we are logged in, we fetch tasks and categories.
 
 #### Logout
 

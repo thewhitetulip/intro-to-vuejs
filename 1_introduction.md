@@ -12,7 +12,7 @@ There are two aspects to this interactivity,
 
 Vue is a library for writing such applications. Vue is technically a library focused on the View layer of the classic MVC model, along with [supporting libraries](https://github.com/vuejs/awesome-vue#libraries--plugins), one can easily build a interactive webapp. Vue provides tools for simplifying the development but you do not have to use any of those to get started, speaking from experience, I've always found it better to start without using any tool "vanilla" and later, when we realize _why_ the tools were created, then we can start using them.
 
-Let's continute the example in the end of the installation chapter.
+Let's continue the example in the end of the installation chapter.
 
 ## Loading Vue
 For using Vue, we first have to load it. Since it is a JS library, all we have to do to use Vue is to load it using a script tag, like we include jQuery and other libraries. `<script src="vue.js"> </script>`.  
@@ -208,7 +208,7 @@ Anything that starts with `v-` is a directive. It is evaluated by Vue. If someth
 
 > **Always open the JS console while writing a vue app**
 
-When the loop evaluates, `todo` will take one value at a time till it reaches th end of todos, the index will do the same about the position of the value in the `todos` array.
+When the loop evaluates, `todo` will take one value at a time till it reaches the end of todos, the index will do the same about the position of the value in the `todos` array.
 
 ## Getting User Input
 
@@ -232,7 +232,7 @@ We add the definition of `todo` and the methods as stated below:
 	data: {
 	    todo: {title: '', text:''},
 	    todos: [
-	        {title: 'Lean JS' , text: "What is JS?"},
+	        {title: 'Learn JS' , text: "What is JS?"},
 	        {title:'Learn vue',  text: "Vue has nice docs!"},
 	        {title:'Build something',  text: "what to build?"}
 	    ]

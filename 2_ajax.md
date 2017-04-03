@@ -4,9 +4,9 @@ Ajax is short for Async Javascript and XML. It is used to develop dynamic apps w
 
 The source code is available on Github. You can clone the repo and delete the logic part and start fresh [go-vue-events](http://github.com/thewhitetulip/go-vue-events).
 
-In the first chapter we saw how to use `v-if`, `v-on`, `<template>` and `v-bind`. The UI which we have to build is simple, we want to build an simple event manager which will interact with the backend.
+In the first chapter we saw how to use `v-if`, `v-on`, `<template>` and `v-bind`. The UI which we have to build is simple, we want to build a simple event manager which will interact with the backend.
 
-There are two parts to our HTML page, the event list which will render out `events` array and another is the input tags which will enable the user to add new events. The rendered list will also allow the user to delete events.
+There are two parts to our HTML page, the event list which will render our `events` array and another is the input tags which will enable the user to add new events. The rendered list will also allow the user to delete events.
 
 We will not be focusing on the HTML part, as we have spent one chapter discussing how to write the front end code. What we will focus on in this chapter would be the AJAX part.
 
@@ -14,7 +14,7 @@ Just a brief overview of the HTML:
 
 `<event-item v-for="(event,index) in events" :event="event" :index="index"></event-item>`
 
-This would be our custom component which we define in app.js file. We include this file _after_ including Vue.js and Vue-resource. If we include this file before either of those two, then there would be errors since the script depends on both of them.
+This will be our custom component which we define in app.js file. We include this file _after_ including Vue.js and Vue-resource. If we include this file before either of those two, then there would be errors since the script depends on both of them.
 
 We start with a simple Vue instance.
 
@@ -50,13 +50,13 @@ We start with a simple Vue instance.
 	    },
 	    
 	    deleteEvent: function(index) {
-			console.log("deleting "+ index)
-		}
+	      console.log("deleting "+ index)
+	    }
 	});
 	
 ## Callbacks
 
-In the first chapter we saw that when we define a Vue instance, among the options is something called as `callbacks`. Mounted is one such callback. After the element has been created and inserted into the DOM, it is called mounted. Immediately after the element is mounted, which means our app is being used, we want to fetch our events and assign the array we fetch to the array we defined in the data portion of our app.
+In the first chapter we saw that when we define a Vue instance, among the options is something called `callbacks`. Mounted is one such callback. After the element has been created and inserted into the DOM, it is called mounted. Immediately after the element is mounted, which means our app is being used, we want to fetch our events and assign the array we fetch to the array we defined in the data portion of our app.
 
 We use Vue.set to set the data (events) field of the Vue instance to the events variable we will fetch from the AJAX request. As of now, we will simulate the AJAX request to ensure that the app works, once we are sure it works, then we can just replace this with an AJAX call.
 
@@ -114,7 +114,7 @@ Reading the documentation of vue-resource, we see that this is the syntax to sen
 
 The general trend is, send the HTTP request, take the response, convert it to json, if it throws an error (like when the API is not accessible) then log the error, otherwise do some action push the new element to the array or remove the element from the array.
 
-We now can use web components to represent our list. We do the following:
+We can now use web components to represent our list. We do the following:
 
 	Vue.component('event-item', {
 	  props: ['event', 'index'],
@@ -142,7 +142,7 @@ We now can use web components to represent our list. We do the following:
 	  }
 	});
 	
-This is fine, but there is one problem, there is noway for Vue to know where the `events` array exists which we are trying to splice. This is because the array was created in the Vue instance and thus can't be accessed by using this. We need to use `app.todos` to access it.
+This is fine, but there is one problem, there is no way for Vue to know where the `events` array exists which we are trying to splice. This is because the array was created in the Vue instance and thus can't be accessed by using this. We need to use `app.todos` to access it.
 
 ## The API
 This example code does HTTP calls. It expects an API to be present. If you know how to build an API, you would need to build the following things:
